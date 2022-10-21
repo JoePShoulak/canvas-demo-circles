@@ -33,10 +33,7 @@ const animate = () => {
 
   c.clearRect(0, 0, innerWidth, innerHeight);
 
-  circles.forEach((cir) => {
-    cir.update();
-    cir.draw();
-  });
+  circles.forEach((cir) => cir.update());
 };
 
 animate();
