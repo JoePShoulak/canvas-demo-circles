@@ -16,20 +16,28 @@ canvas.height = window.innerHeight;
 /* == SETUP == */
 const c = canvas.getContext("2d");
 
-const circles = Array(800)
-  .fill()
-  .map((circle) => {
-    const x = Circle.radius + Math.random() * (innerWidth - 2 * Circle.radius);
-    const y = Circle.radius + Math.random() * (innerHeight - 2 * Circle.radius);
+let circles;
 
-    circle = new Circle(c, x, y);
-    circle.fill = randomElement(COLORS);
+const setup = (event) => {
+  event && event.preventDefault();
 
-    return circle;
-  });
+  circles = Array(800)
+    .fill()
+    .map((circle) => {
+      const x =
+        Circle.radius + Math.random() * (innerWidth - 2 * Circle.radius);
+      const y =
+        Circle.radius + Math.random() * (innerHeight - 2 * Circle.radius);
+
+      circle = new Circle(c, x, y);
+      circle.fill = randomElement(COLORS);
+
+      return circle;
+    });
+};
 
 window.addEventListener("mousemove", (event) => inflateCircles(circles, event));
-
+window.addEventListener("contextmenu", setup);
 window.addEventListener("resize", () => resizeCanvas(canvas, circles));
 
 /* == MAIN == */
@@ -41,4 +49,5 @@ const animate = () => {
   circles.forEach((cir) => cir.update());
 };
 
+setup();
 animate();
