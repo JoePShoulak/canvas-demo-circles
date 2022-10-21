@@ -1,4 +1,9 @@
-import { COLORS, randomElement, inflateCircles } from "./lib/helper.js";
+import {
+  COLORS,
+  randomElement,
+  inflateCircles,
+  resizeCanvas,
+} from "./lib/helper.js";
 import Circle from "./lib/Circle.js";
 
 /* == CONSTANTS == */
